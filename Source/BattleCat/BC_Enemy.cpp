@@ -14,6 +14,7 @@ void ABC_Enemy::Tick(float DeltaSeconds)
 void ABC_Enemy::Attack()
 {
 	ABC_Entity* _unit = Cast<ABC_Entity>(hitResult.GetActor());
+
 	if (!_unit)return;
 	_unit->LoseHealth(attackDamage);
 }

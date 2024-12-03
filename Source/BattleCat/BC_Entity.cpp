@@ -55,6 +55,11 @@ void ABC_Entity::Move(float _deltaTime)
 void ABC_Entity::Attack()
 {
 	// Declaration in childs class
+	//Variables déclarées dans le .h
+	if (soundToPlay && actorTarget)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, soundToPlay, actorTarget->GetActorLocation());
+	}
 }
 
 void ABC_Entity::Attacking(float _deltaTime)
@@ -83,6 +88,7 @@ void ABC_Entity::Attacking(float _deltaTime)
 			spriteComponent->SetSprite(forswingSprite);
 			hasFinishAttackAnimation = false;
 		}
+		
 	}
 	else if (attackState == EAttackState::FORSWING)
 	{

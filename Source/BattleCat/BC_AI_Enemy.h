@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Kismet/GameplayStatics.h"
 #include "BC_AI_Enemy.generated.h"
 
 class ABC_EnemyBase;
@@ -30,7 +31,7 @@ struct FAI_SpawnData
 };
 
 
-/* AI_Enemy est "l'AI" du jeux permettant de faire apparettre des Enemys suivant des conditions.
+/* AI_Enemy est "l'AI" du jeux permettant de faire apparaitre des Enemys suivant des conditions.
  * Elle stock un tableau de données de spawn d'Enemy et un offset pour la profondeur de spawn. */
 
 UCLASS()
@@ -40,7 +41,12 @@ class BATTLECAT_API ABC_AI_Enemy : public AActor
 
 public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEnemySpawned, ABC_Enemy*, _enemy);
-
+// L'acteur sur lequel je vais jouer mon son
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Audio")
+	AActor* actorTarget;
+// Le Son à jouer
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Audio")
+	USoundBase* soundToPlay;
 protected:
 	// Event Used for BP song assignment
 	UPROPERTY(BlueprintAssignable, BlueprintReadWrite)

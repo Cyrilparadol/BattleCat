@@ -76,6 +76,10 @@ void ABC_AI_Enemy::SpawnEnemy(const TSubclassOf<ABC_Enemy>& _enemyToSpawn)
 													      FRotator::ZeroRotator);
 
 	if (!_enemy)return;
-	
+	//Variables déclarées dans le .h
+	if (soundToPlay && actorTarget)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, soundToPlay, actorTarget->GetActorLocation());
+	}
 	onEnemySpawned.Broadcast(_enemy);
 }

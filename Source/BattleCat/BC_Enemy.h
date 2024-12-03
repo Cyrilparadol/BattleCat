@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "BC_Entity.h"
+#include "Kismet/GameplayStatics.h"
 #include "BC_Enemy.generated.h"
 
 

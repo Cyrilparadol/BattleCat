@@ -4,6 +4,7 @@
 #include "Components/BoxComponent.h"
 #include "PaperSpriteComponent.h"
 #include "GameFramework/Actor.h"
+#include "Kismet/GameplayStatics.h"
 #include "BC_Entity.generated.h"
 
 class ABC_Player;
@@ -30,6 +31,12 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAttack);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLoseHealth);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEntityDie);
+	// L'acteur sur lequel je vais jouer mon son
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Audio")
+	AActor* actorTarget;
+	// Le Son à jouer
+	UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Audio")
+	USoundBase* soundToPlay;
 
 protected:
 	// Event Used for BP song assignment
